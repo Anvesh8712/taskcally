@@ -36,7 +36,7 @@ const AITodo = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/gemini/generate-tasks",
+        "https://taskcally.vercel.app/api/gemini/generate-tasks",
         { prompt }
       );
       const generatedTasks =
@@ -85,7 +85,7 @@ const AITodo = () => {
         dueDate: dueDates[key],
         completed: false,
       }));
-      await axios.post("http://localhost:3001/api/tasks/bulk", {
+      await axios.post("https://taskcally.vercel.app/api/tasks/bulk", {
         tasks: formattedTasks,
       });
       alert("Tasks saved successfully!");

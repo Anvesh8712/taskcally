@@ -44,7 +44,7 @@ export default function SignUp() {
       );
       const user = userCredential.user;
 
-      await axios.post("http://localhost:3001/api/users/register", {
+      await axios.post("https://taskcally.vercel.app/api/users/register", {
         uid: user.uid,
         name: name,
         email: email,

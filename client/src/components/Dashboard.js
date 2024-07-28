@@ -88,11 +88,14 @@ export default function Dashboard() {
   const handleAddTask = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/api/tasks", {
-        ...newTask,
-        userId: user.uid,
-        completed: false,
-      });
+      const response = await axios.post(
+        "https://taskcally.vercel.app/api/tasks",
+        {
+          ...newTask,
+          userId: user.uid,
+          completed: false,
+        }
+      );
       setTasks([...tasks, response.data]);
       setNewTask({ title: "", description: "", dueDate: "" });
     } catch (error) {
@@ -103,7 +106,7 @@ export default function Dashboard() {
   const handleToggleComplete = async (taskId, completed) => {
     try {
       const response = await axios.put(
-        `http://localhost:3001/api/tasks/${taskId}`,
+        `https://taskcally.vercel.app/api/tasks/${taskId}`,
         {
           completed: !completed,
         }
@@ -117,7 +120,7 @@ export default function Dashboard() {
 
   const handleDeleteTask = async (taskId) => {
     try {
-      await axios.delete(`http://localhost:3001/api/tasks/${taskId}`);
+      await axios.delete(`https://taskcally.vercel.app/api/tasks/${taskId}`);
       setTasks(tasks.filter((task) => task._id !== taskId));
     } catch (error) {
       console.error("Error deleting task:", error);
