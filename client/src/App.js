@@ -18,32 +18,14 @@ function ProtectedRoute({ children }) {
   return user ? children : <Navigate to="/signin" />;
 }
 
-function unProtectedRoute({ children }) {
-  return children;
-}
-
 function App() {
   return (
     <Router>
       <AuthProvider>
         <div className="App">
           <Routes>
-            <Route
-              path="/signin"
-              element={
-                <unProtectedRoute>
-                  <SignIn />
-                </unProtectedRoute>
-              }
-            />
-            <Route
-              path="/signup"
-              element={
-                <unProtectedRoute>
-                  <SignUp />
-                </unProtectedRoute>
-              }
-            />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
             <Route path="/" element={<SignIn />} />
             <Route
               path="/dashboard"
