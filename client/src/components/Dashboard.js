@@ -55,7 +55,7 @@ export default function Dashboard() {
     const fetchTasks = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/tasks/${user.uid}`
+          `https://taskcally.vercel.app/api/tasks/${user.uid}`
         );
         setTasks(response.data);
       } catch (error) {
@@ -66,7 +66,7 @@ export default function Dashboard() {
     const fetchUserInfo = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/users/${user.uid}`
+          `https://taskcally.vercel.app/users/${user.uid}`
         );
         setUserInfo(response.data);
       } catch (error) {
