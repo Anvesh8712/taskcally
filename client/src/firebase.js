@@ -1,9 +1,7 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-// import { getAnalytics } from "firebase/analytics"; // Uncomment if you need analytics
+// import { getAnalytics } from "firebase/analytics";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAOVwk3oGDCtuu2Sx3kWnfkkBa_eB1kEY8",
   authDomain: "taskcally.firebaseapp.com",
@@ -14,11 +12,9 @@ const firebaseConfig = {
   measurementId: "G-RCYE5E84VM",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app); // Uncomment if you need analytics
+// const analytics = getAnalytics(app);
 
-// Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
 export { auth, onAuthStateChanged };

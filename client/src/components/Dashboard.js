@@ -40,7 +40,7 @@ const getWeekDays = (startDate) => {
 const formatDate = (date) => date.toISOString().split("T")[0];
 
 export default function Dashboard() {
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState({
@@ -189,7 +189,6 @@ export default function Dashboard() {
               <Button
                 color="inherit"
                 onClick={() => {
-                  signOut();
                   navigate("/signin");
                 }}
                 startIcon={<LogoutIcon />}

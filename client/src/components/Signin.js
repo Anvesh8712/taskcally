@@ -14,8 +14,8 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import {
   signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
+  // GoogleAuthProvider,
+  // signInWithPopup,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -42,17 +42,17 @@ export default function SignIn() {
       });
   };
 
-  const handleGoogleSignIn = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        console.log("Signed in with Google:", result.user);
-        navigate("/dashboard");
-      })
-      .catch((error) => {
-        console.error("Error signing in with Google:", error);
-      });
-  };
+  // const handleGoogleSignIn = () => {
+  //   const provider = new GoogleAuthProvider();
+  //   signInWithPopup(auth, provider)
+  //     .then((result) => {
+  //       console.log("Signed in with Google:", result.user);
+  //       navigate("/dashboard");
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error signing in with Google:", error);
+  //     });
+  // };
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -110,7 +110,7 @@ export default function SignIn() {
             >
               Sign In
             </Button>
-            <Button
+            {/* <Button
               onClick={handleGoogleSignIn}
               fullWidth
               variant="contained"
@@ -118,7 +118,7 @@ export default function SignIn() {
               sx={{ mt: 1, mb: 2 }}
             >
               Sign In with Google
-            </Button>
+            </Button> */}
             <Grid container>
               <Grid item>
                 <Button onClick={() => navigate("/signup")} variant="body2">
