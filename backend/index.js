@@ -23,11 +23,12 @@ const client = new MongoClient(uri, {
   },
 });
 
-async function run() {
-  try {
-    await client.connect();
-
-    await client.db("admin").command({ ping: 1 });
+client
+  .connect()
+  .then(() => {
+    return client.db("admin").command({ ping: 1 });
+  })
+  .then(() => {
     console.log("Connected to MongoDB");
 
     const db = client.db("taskcally");
@@ -43,9 +44,10 @@ async function run() {
     app.listen(PORT, () => {
       console.log(`Server listening on ${PORT}`);
     });
-  } catch (error) {
-    console.error(error);
-  }
-}
+  })
+  .catch((error) => {
+    console.error("Error connecting to MongoDB:", error);
+    process.exit(1); // Exit process with failure
+  });
 
-run().catch(console.dir);
+module.exports = app;
