@@ -1,1 +1,30 @@
 .vercel
+
+
+# # // {
+# //   "version": 2,
+# //   "name": "taskcally",
+# //   "builds": [
+# //     {
+# //       "src": "backend/package.json",
+# //       "use": "@vercel/node"
+# //     },
+# //     {
+# //       "src": "client/package.json",
+# //       "use": "@vercel/static-build",
+# //       "config": {
+# //         "distDir": "build"
+# //       }
+# //     }
+# //   ],
+# //   "routes": [
+# //     {
+# //       "src": "/api/(.*)",
+# //       "dest": "/backend/server/index.js"
+# //     },
+# //     {
+# //       "src": "/(.*)",
+# //       "dest": "/client/$1"
+# //     }
+# //   ]
+# // }

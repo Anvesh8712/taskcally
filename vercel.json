@@ -1,27 +1,26 @@
 {
   "version": 2,
-  "name": "taskcally",
   "builds": [
+    {
+      "src": "backend/server/index.js",
+      "use": "@vercel/node"
+    },
     {
       "src": "client/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "client/build"
+        "distDir": "build"
       }
-    },
-    {
-      "src": "backend/server/index.js",
-      "use": "@vercel/node"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/backend/server/index.js"
+      "source": "/api/(.*)",
+      "destination": "backend/server/index.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "/client/$1"
+      "source": "/(.*)",
+      "destination": "/client/$1"
     }
   ]
 }
