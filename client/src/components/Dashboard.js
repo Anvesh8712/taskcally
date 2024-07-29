@@ -54,9 +54,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get(
-          `https://taskcally.vercel.app/api/tasks/${user.uid}`
-        );
+        const response = await axios.get(`/api/tasks/${user.uid}`);
         setTasks(response.data);
       } catch (error) {
         console.error("Error fetching tasks:", error);
@@ -65,9 +63,7 @@ export default function Dashboard() {
 
     const fetchUserInfo = async () => {
       try {
-        const response = await axios.get(
-          `https://taskcally.vercel.app/users/${user.uid}`
-        );
+        const response = await axios.get(`/api/users/${user.uid}`);
         setUserInfo(response.data);
       } catch (error) {
         console.error("Error fetching user info:", error);
@@ -88,14 +84,11 @@ export default function Dashboard() {
   const handleAddTask = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        "https://taskcally.vercel.app/api/tasks",
-        {
-          ...newTask,
-          userId: user.uid,
-          completed: false,
-        }
-      );
+      const response = await axios.post("/api/tasks", {
+        ...newTask,
+        userId: user.uid,
+        completed: false,
+      });
       setTasks([...tasks, response.data]);
       setNewTask({ title: "", description: "", dueDate: "" });
     } catch (error) {
@@ -105,12 +98,9 @@ export default function Dashboard() {
 
   const handleToggleComplete = async (taskId, completed) => {
     try {
-      const response = await axios.put(
-        `https://taskcally.vercel.app/api/tasks/${taskId}`,
-        {
-          completed: !completed,
-        }
-      );
+      const response = await axios.put(`/api/tasks/${taskId}`, {
+        completed: !completed,
+      });
       const updatedTask = response.data;
       setTasks(tasks.map((task) => (task._id === taskId ? updatedTask : task)));
     } catch (error) {
@@ -120,7 +110,7 @@ export default function Dashboard() {
 
   const handleDeleteTask = async (taskId) => {
     try {
-      await axios.delete(`https://taskcally.vercel.app/api/tasks/${taskId}`);
+      await axios.delete(`/api/tasks/${taskId}`);
       setTasks(tasks.filter((task) => task._id !== taskId));
     } catch (error) {
       console.error("Error deleting task:", error);
@@ -129,7 +119,9 @@ export default function Dashboard() {
 
   const renderTasksForDate = (date) => {
     const formattedDate = formatDate(date);
-    const tasksForDate = tasks.filter((task) => task.dueDate === formattedDate);
+    const tasksForDate = tasks.filter(
+      (task) => task.dueDate && task.dueDate === formattedDate
+    );
 
     return tasksForDate.length > 0 ? (
       tasksForDate.map((task) => (
@@ -148,7 +140,10 @@ export default function Dashboard() {
             <IconButton
               edge="end"
               aria-label="delete"
-              onClick={() => handleDeleteTask(task._id)}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDeleteTask(task._id);
+              }}
             >
               <DeleteIcon />
             </IconButton>
@@ -214,7 +209,14 @@ export default function Dashboard() {
             <Button onClick={handleNextWeek}>Next Week</Button>
             <Grid container spacing={2}>
               {weekDays.map((day) => (
-                <Grid item xs={12} sm={6} md={4} lg={3} key={day}>
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  key={day.toDateString()}
+                >
                   <Paper elevation={3} sx={{ padding: 2, height: "100%" }}>
                     <Typography variant="h6">{day.toDateString()}</Typography>
                     <List>{renderTasksForDate(day)}</List>
@@ -278,7 +280,7 @@ export default function Dashboard() {
           <Button
             fullWidth
             variant="contained"
-            color="secondary"
+            color="primary"
             sx={{ mt: 3, mb: 2 }}
             onClick={() => navigate("/ai-todo")}
           >
