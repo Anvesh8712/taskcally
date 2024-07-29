@@ -54,7 +54,9 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get(`/api/tasks/${user.uid}`);
+        const response = await axios.get(
+          `https://taskcally-backend.vercel.app/api/tasks/${user.uid}`
+        );
         setTasks(response.data);
       } catch (error) {
         console.error("Error fetching tasks:", error);

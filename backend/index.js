@@ -42,7 +42,7 @@ client
     app.use("/api/gemini", geminiRoutes(db));
 
     app.use("/", (req, res) => {
-      res.json({ message: "Hello from server!" });
+      res.send({ message: "Hello from server!" });
     });
 
     app.listen(PORT, () => {
