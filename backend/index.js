@@ -37,7 +37,7 @@ client
     app.use("/api/tasks", taskRoutes(db));
     app.use("/api/gemini", geminiRoutes(db));
 
-    app.get("/", (req, res) => {
+    app.use("/", (req, res) => {
       res.json({ message: "Hello from server!" });
     });
 
