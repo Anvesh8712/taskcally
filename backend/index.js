@@ -3,9 +3,9 @@ const { MongoClient, ServerApiVersion } = require("mongodb");
 const cors = require("cors");
 require("dotenv").config();
 
-const userRoutes = require("./routes/userRoutes");
-const taskRoutes = require("./routes/taskRoutes");
-const geminiRoutes = require("./routes/geminiRoutes");
+const userRoutes = require("./server/routes/userRoutes");
+const taskRoutes = require("./server/routes/taskRoutes");
+const geminiRoutes = require("./server/routes/geminiRoutes");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -13,9 +13,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// const uri = process.env.MONGODB_URI;
-const uri =
-  "mongodb+srv://atvanvesh:Shilpa123456+@taskcally.3uioyib.mongodb.net/?retryWrites=true&w=majority&appName=taskcally";
+const uri = process.env.MONGODB_URI;
 
 const client = new MongoClient(uri, {
   serverApi: {
