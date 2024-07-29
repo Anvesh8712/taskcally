@@ -36,7 +36,7 @@ async function run() {
     app.use("/api/tasks", taskRoutes(db));
     app.use("/api/gemini", geminiRoutes(db));
 
-    app.get("/api", (req, res) => {
+    app.get("/", (req, res) => {
       res.json({ message: "Hello from server!" });
     });
 
