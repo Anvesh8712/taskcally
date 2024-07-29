@@ -13,9 +13,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// const uri = process.env.MONGODB_URI;
-const uri =
-  "mongodb+srv://atvanvesh:Shilpa123456+@taskcally.3uioyib.mongodb.net/?retryWrites=true&w=majority&appName=taskcally";
+const uri = process.env.MONGODB_URI;
 
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
