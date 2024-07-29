@@ -18,6 +18,10 @@ const uri =
   "mongodb+srv://atvanvesh:Shilpa123456+@taskcally.3uioyib.mongodb.net/?retryWrites=true&w=majority&appName=taskcally";
 
 const client = new MongoClient(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  tls: true, // Explicitly enable TLS/SSL
+  tlsAllowInvalidCertificates: true, // Allow invalid certificates if necessary (use with caution)
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
