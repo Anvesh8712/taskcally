@@ -1,7 +1,3 @@
-Sure, here's the README content formatted for easy copying and pasting:
-
----
-
 # Taskcally
 
 Taskcally is a task management web application that allows users to create, view, and manage their tasks. Users can manually add tasks or use the AI Todo Maker to generate tasks based on prompts. The application features a weekly view of tasks and allows for easy task completion and deletion.
@@ -13,6 +9,20 @@ Taskcally is a task management web application that allows users to create, view
 - **AI Todo Maker:** Generate tasks based on user prompts using the Gemini API.
 - **Weekly Task View:** View tasks in a calendar format for the current week.
 - **Responsive Design:** Optimized for both desktop and mobile devices.
+
+## Screenshots
+
+### Sign In Page
+
+![Sign In Page](./screenshots/signin.png)
+
+### Dashboard
+
+![Dashboard](./screenshots/dashboard.png)
+
+### AI Todo Maker
+
+![AI Todo Maker](./screenshots/ai-todo.png)
 
 ## Installation
 
@@ -126,8 +136,4 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-For any questions or feedback, please contact [your email].
-
----
-
-Feel free to modify this README file to better suit your project's specifics and personal preferences.
+For any questions or feedback, please contact atvanvesh@gmail.com.
