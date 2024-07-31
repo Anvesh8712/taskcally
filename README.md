@@ -18,11 +18,11 @@ Taskcally is a task management web application that allows users to create, view
 
 ### Dashboard
 
-![Dashboard](./screenshots/dashboard.png)
+![Dashboard](./screenshots/dashboard.PNG)
 
 ### AI Todo Maker
 
-![AI Todo Maker](./screenshots/ai-todo.png)
+![AI Todo Maker](./screenshots/ai-todo.PNG)
 
 ## Installation
 
