@@ -14,7 +14,7 @@ Taskcally is a task management web application that allows users to create, view
 
 ### Sign In Page
 
-![Sign In Page](./screenshots/signin.png)
+![Sign In Page](./screenshots/signin.PNG)
 
 ### Dashboard
 
